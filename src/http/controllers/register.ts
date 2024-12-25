@@ -13,8 +13,8 @@ export async function register(req: FastifyRequest, reply: FastifyReply) {
 
     const { email, name, password } = registerBodySchema.parse(req.body);
     try {
-        const repository = new PrismaUsersRepository();
-        const registerUseCase = new RegisterUseCase(repository);
+        const usersRepository = new PrismaUsersRepository();
+        const registerUseCase = new RegisterUseCase(usersRepository);
         await registerUseCase.handle({ email, name, password });
     }
     // eslint-disable-next-line
