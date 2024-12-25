@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  ignite-postgres-03:
+    image: bitnami/postgresql
+    ports:
+      - 5433:5433
+    environment:
+      -  POSTGRESQL_USERNAME=docker
+      -  POSTGRESQL_PASSWORD=docker
+      -  POSTGRESQL_DATABASE=ignite-node-03
+      -  POSTGRESQL_PORT_NUMBER=5433
