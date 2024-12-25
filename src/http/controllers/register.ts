@@ -1,4 +1,5 @@
-import { registerUseCase } from "@/use-cases/register";
+import { PrismaUsersRepository } from "@/repositories/prisma-users-repository";
+import { RegisterUseCase } from "@/use-cases/register";
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
@@ -12,7 +13,9 @@ export async function register(req: FastifyRequest, reply: FastifyReply) {
 
     const { email, name, password } = registerBodySchema.parse(req.body);
     try {
-        await registerUseCase({ email, name, password });
+        const repository = new PrismaUsersRepository();
+        const registerUseCase = new RegisterUseCase(repository);
+        await registerUseCase.handle({ email, name, password });
     }
     // eslint-disable-next-line
     catch (ignore) {

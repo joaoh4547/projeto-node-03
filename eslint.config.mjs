@@ -15,7 +15,8 @@ export default [
             quotes: ["error", "double"],
             semi: ["error", "always"],
             indent: ["error", 4],
-            "linebreak-style": ["error", "unix"]
+            "linebreak-style": ["error", "unix"],
+            "@typescript-eslint/no-explicit-any": "off"
         },
     }
 ];
