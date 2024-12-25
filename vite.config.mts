@@ -4,5 +4,11 @@ import { defineConfig } from "vitest/config";
 export default defineConfig({
     plugins:[
         tsConfigPaths()
-    ]
+    ],
+    test: {
+        globals: true,
+        coverage: {
+            all: false,
+        },
+    },
 });

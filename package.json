@@ -11,7 +11,8 @@
     "build": "tsup src",
     "start": "node dist/server.js",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "keywords": [],
   "author": "João Henrique",
@@ -20,6 +21,7 @@
     "@eslint/js": "9.17.0",
     "@types/bcryptjs": "2.4.6",
     "@types/node": "22.10.2",
+    "@vitest/coverage-v8": "2.1.8",
     "eslint": "9.17.0",
     "globals": "15.14.0",
     "prisma": "6.1.0",
