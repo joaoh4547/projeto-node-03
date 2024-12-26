@@ -2,8 +2,13 @@ import { Prisma, User } from "@prisma/client";
 import { UsersRepository } from "../users-repository";
 
 export class InMemoryUsersRepository implements UsersRepository {
+   
 
     private users: User[] = [];
+
+    async findById(id: string) {
+        return this.users.find(u => u.id === id) || null;
+    }
 
     async create(data: Prisma.UserCreateInput) {
         const user: User = {
