@@ -13,7 +13,7 @@
  - [ ] deve ser possível o usuário buscar academias pelo nome;
  - [x] deve ser possível o usuário realizar o check-in em uma academia;
  - [ ] deve ser possível validar o check-in de um usuário;
- - [ ] deve ser possível cadastrar uma academia;
+ - [x] deve ser possível cadastrar uma academia;
 
 ### RN (Requisitos de Negocio)
 
