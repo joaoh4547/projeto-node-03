@@ -15,6 +15,12 @@ export class CheckInUseCase {
     }
 
     async handle({ gymId, userId }: CheckInUseCaseParams): Promise<CheckInUseCaseResult> {
+
+        const checkInOneSomeDay = await this.checkInsRepository.findByUserIdOnDate(userId,new Date());
+        if(checkInOneSomeDay){
+            throw new Error();
+        }
+
         const checkIn = await this.checkInsRepository.create({ user_id: userId, gym_id: gymId });
 
         return {
