@@ -13,15 +13,21 @@ export async function authenticate(req: FastifyRequest, reply: FastifyReply) {
     const { email, password } = authenticateBodySchema.parse(req.body);
     try {
         const authenticateUseCase = makeAuthenticateUseCase();
-        await authenticateUseCase.handle({ email, password });
+        const { user } = await authenticateUseCase.handle({ email, password });
+        const token = await reply.jwtSign({}, {
+            sign: {
+                algorithm: "HS512",
+                sub: user.id
+            }
+        });
+
+        return reply.status(200).send({token});
     }
 
     catch (err) {
         if (err instanceof InvalidCredentialsError) {
-            reply.status(400).send({message: err.message});
+            reply.status(400).send({ message: err.message });
         }
         throw err;
     }
-    return reply.status(200).send();
-
 }
