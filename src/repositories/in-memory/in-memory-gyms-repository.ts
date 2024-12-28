@@ -14,7 +14,7 @@ export class InMemoryGymsRepository implements GymsRepository {
         return gym;
     }
 
-    async create({id,  title, description, phone, longitude, latitude }: Prisma.GymCreateInput) {
+    async create({ id, title, description, phone, longitude, latitude }: Prisma.GymCreateInput) {
         const gym = {
             id: id ? id : randomUUID(),
             title,
@@ -27,6 +27,13 @@ export class InMemoryGymsRepository implements GymsRepository {
 
         this.gyms.push(gym);
         return gym;
+    }
+
+    async searchMany(query: string, page: number) {
+        const PAGE_SIZE = 20;
+        return this.gyms
+            .filter((gym) => gym.title.includes(query))
+            .slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
     }
 
 }
