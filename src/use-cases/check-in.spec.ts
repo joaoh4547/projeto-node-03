@@ -2,7 +2,6 @@ import { CheckInsRepository } from "@/repositories/check-ins-repository";
 import { InMemoryCheckInsRepository } from "@/repositories/in-memory/in-memory-check-ins-repository";
 
 import { InMemoryGymsRepository } from "@/repositories/in-memory/in-memory-gyms-repository";
-import { Decimal } from "@prisma/client/runtime/library";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CheckInUseCase } from "./check-in";
 import { MaxDistanceError } from "./errors/max-distance-error";
@@ -91,14 +90,11 @@ describe("Check-in Use Case", () => {
 
     it("should not be able to check in on distant gym", async () => {
 
-        gymsRepository.gyms.push({
+        await gymsRepository.create({
             id: "gym-02",
             title: "Gym 02",
-            description: " ",
-            phone: "",
-            latitude: new Decimal(-21.4531121),
-            longitude:  new Decimal(-49.2210893)
-           
+            latitude: -21.4531121,
+            longitude: -49.2210893
         });
 
         await expect(async () =>{

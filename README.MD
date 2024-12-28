@@ -8,7 +8,7 @@
  - [x] Deve ser possível se autenticar;
  - [x] Deve ser possível obter o perfil de um usuário autenticado;
  - [ ] deve ser possível obter o numero de check-ins realizados pelo usuário autenticado;
- - [ ] deve ser possível o usuário obter seu histórico de check-ins;
+ - [x] deve ser possível o usuário obter seu histórico de check-ins;
  - [ ] deve ser possível  o usuário buscar academias próximas;
  - [ ] deve ser possível o usuário buscar academias pelo nome;
  - [x] deve ser possível o usuário realizar o check-in em uma academia;
@@ -28,5 +28,5 @@
 
 - [x]  a senha do usuário precisa ser criptografada;
 - [x] os dados da aplicação precisam estar persistidos em um banco PostgreSQL;
-- [ ] todas listas de dados precisam estar paginadas com 20  itens por pagina;
+- [x] todas listas de dados precisam estar paginadas com 20  itens por pagina;
 - [ ] o usuário deve ser identificado por um JWT (JSON Web Token);

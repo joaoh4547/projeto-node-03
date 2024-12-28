@@ -4,7 +4,7 @@ import { randomUUID } from "crypto";
 import { GymsRepository } from "../gyms-repository";
 
 export class InMemoryGymsRepository implements GymsRepository {
-    gyms: Gym[] = [];
+    private gyms: Gym[] = [];
 
     async findById(id: string) {
         const gym = this.gyms.find(gym => gym.id === id);
