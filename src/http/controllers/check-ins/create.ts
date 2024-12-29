@@ -14,8 +14,7 @@ export async function create(req: FastifyRequest, reply: FastifyReply) {
         }),
         longitude: z.number().refine(value => {
             return Math.abs(value) <= 180;
-        }),
-        userId: z.string()
+        })
     });
 
     const { latitude, longitude } = createBodySchema.parse(req.body);
