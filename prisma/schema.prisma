@@ -13,12 +13,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Rule {
+  ADMIN
+  MEMBER
+}
+
 model User {
   id            String    @id @default(uuid())
   name          String
   email         String    @unique
   password_hash String
   created_at    DateTime  @default(now())
+  role          Rule      @default(MEMBER)
   checkIns      CheckIn[]
 
   @@map("users")

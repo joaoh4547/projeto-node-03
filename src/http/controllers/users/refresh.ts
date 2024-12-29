@@ -6,14 +6,20 @@ export async function refresh(req: FastifyRequest, reply: FastifyReply) {
         onlyCookie: true
     });
 
-    const token = await reply.jwtSign({}, {
+    const {role} = req.user;
+
+    const token = await reply.jwtSign({
+        role 
+    }, {
         sign: {
             algorithm: "HS512",
             sub: req.user.sub
         }
     });
 
-    const refreshToken = await reply.jwtSign({}, {
+    const refreshToken = await reply.jwtSign({
+        role
+    }, {
         sign: {
             algorithm: "HS512",
             sub: req.user.sub,
