@@ -2,9 +2,9 @@ import { makeCreateGymUseCase } from "@/use-cases/factories/make-create-gym-use-
 import { FastifyReply, FastifyRequest } from "fastify";
 import { z } from "zod";
 
-export async function register(req: FastifyRequest, reply: FastifyReply) {
+export async function create(req: FastifyRequest, reply: FastifyReply) {
 
-    const registerBodySchema = z.object({
+    const createBodySchema = z.object({
         title: z.string(),
         description: z.string().nullable(),
         phone: z.string().nullable(),
@@ -16,7 +16,7 @@ export async function register(req: FastifyRequest, reply: FastifyReply) {
         })
     });
 
-    const { title, description, phone, latitude, longitude } = registerBodySchema.parse(req.body);
+    const { title, description, phone, latitude, longitude } = createBodySchema.parse(req.body);
     const createGym = makeCreateGymUseCase();
     await createGym.handle({ title, description, phone, latitude, longitude });
     return reply.status(201).send();
