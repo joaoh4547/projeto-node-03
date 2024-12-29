@@ -51,5 +51,8 @@
     "dotenv": "16.4.7",
     "fastify": "5.2.0",
     "zod": "3.24.1"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.9.5"
   }
 }
